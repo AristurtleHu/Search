@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Pacman Submit
+search.zip
+*.zip
+
+# VS Code Settings
+.vscode/
