@@ -4,7 +4,7 @@
 # educational purposes provided that (1) you do not distribute or publish
 # solutions, (2) you retain this notice, and (3) you provide clear
 # attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-# 
+#
 # Attribution Information: The Pacman AI projects were developed at UC Berkeley.
 # The core projects and autograders were primarily created by John DeNero
 # (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
@@ -18,6 +18,7 @@ Pacman agents (in searchAgents.py).
 """
 
 import util
+
 
 class SearchProblem:
     """
@@ -68,9 +69,11 @@ def tinyMazeSearch(problem):
     sequence of moves will be incorrect, so only use this for tinyMaze.
     """
     from game import Directions
+
     s = Directions.SOUTH
     w = Directions.WEST
-    return  [s, s, w, s, w, w, s, w]
+    return [s, s, w, s, w, w, s, w]
+
 
 def depthFirstSearch(problem):
     """
@@ -103,6 +106,7 @@ def depthFirstSearch(problem):
                 stack.push((succ, actions + [action]))
     return []
 
+
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
@@ -119,6 +123,7 @@ def breadthFirstSearch(problem):
                 visited.add(succ)
                 queue.push((succ, actions + [action]))
     return []
+
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
@@ -140,12 +145,14 @@ def uniformCostSearch(problem):
                 pq.push((succ, actions + [action], newCost), newCost)
     return []
 
+
 def nullHeuristic(state, problem=None):
     """
     A heuristic function estimates the cost from the current state to the nearest
     goal in the provided SearchProblem.  This heuristic is trivial.
     """
     return 0
+
 
 def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
@@ -164,7 +171,10 @@ def aStarSearch(problem, heuristic=nullHeuristic):
         for succ, action, stepCost in problem.getSuccessors(state):
             if succ not in visited:
                 newCost = cost + stepCost
-                pq.push((succ, actions + [action], newCost), newCost + heuristic(succ, problem))
+                pq.push(
+                    (succ, actions + [action], newCost),
+                    newCost + heuristic(succ, problem),
+                )
     return []
 
 
